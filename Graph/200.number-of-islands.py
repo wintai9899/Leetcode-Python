@@ -7,6 +7,7 @@
 # @lc code=start
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
+        
         ROWS = len(grid)
         COLS = len(grid[0])
         islands = 0
