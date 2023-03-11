@@ -7,27 +7,27 @@
 # @lc code=start
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        res = [] 
         
-        def backtrack(i, curSum, curList):
+        res = []
+        
+        def backtrack(i, curList, curSum):
             if i == len(candidates) or curSum > target:
-                return
-            
+                return 
+
+            # found match sum 
             if curSum == target:
                 res.append(curList.copy())
                 return 
-            # decision to include candidate
+
             curList.append(candidates[i])
-            backtrack(i, curSum + candidates[i], curList)
-            # decision not to include 
-            curList.pop()
-            backtrack(i + 1, curSum, curList)
+            backtrack(i, curList, curSum + candidates[i])
             
-        backtrack(0,0,[])
+            curList.pop()
+            backtrack(i+1, curList, curSum)
+
+        backtrack(0,[],0)
         
         return res
-            
-            
         
 # @lc code=end
 
