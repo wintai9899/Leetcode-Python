@@ -15,6 +15,7 @@ class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         
         def helper(left,right):
+            # single node or node does not exist
             if left > right:
                 return
         

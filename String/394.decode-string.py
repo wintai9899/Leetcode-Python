@@ -28,6 +28,7 @@ class Solution:
                 while stack and stack[-1].isdigit():
                     k = stack.pop() + k
                     # build output string
+                # put back on stack
                 stack.append(int(k) * subStr)
         return "".join(stack)
         
