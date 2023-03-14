@@ -6,6 +6,7 @@
 
 # @lc code=start
 class Solution:
+    # greedy approach
     def maxSubArray(self, nums: List[int]) -> int:
         maxSum = curSum = nums[0]
         
@@ -14,6 +15,19 @@ class Solution:
             maxSum = max(curSum, maxSum)
         
         return maxSum
+    
+    # sol2
+    def maxSubArray2(self,nums):
+        maxSub = nums[0]
+        curSum = 0
         
+        for n in nums:
+            if curSum < 0:
+                curSum = 0
+                
+            curSum += n
+            maxSub = max(maxSub, curSum)
+        
+        return maxSub
 # @lc code=end
 

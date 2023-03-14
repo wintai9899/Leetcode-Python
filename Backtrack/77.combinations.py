@@ -7,6 +7,7 @@
 # @lc code=start
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
+        # eg. n = 4, k = 2 -> all combinations in [1,2,3,4] with length k
         res= [] 
         
         def backtrack(i, comb):
