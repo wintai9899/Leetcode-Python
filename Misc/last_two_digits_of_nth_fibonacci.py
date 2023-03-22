@@ -9,3 +9,6 @@ def fibonacci(n):
     return dp[n]
 
 print(fibonacci(5))
+
+#F(5) = 5
+#F(6) = 8 
