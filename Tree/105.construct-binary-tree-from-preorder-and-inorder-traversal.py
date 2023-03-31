@@ -1,4 +1,4 @@
-#
+ #
 # @lc app=leetcode id=105 lang=python3
 #
 # [105] Construct Binary Tree from Preorder and Inorder Traversal

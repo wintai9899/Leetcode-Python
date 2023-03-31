@@ -73,6 +73,11 @@ class Solution:
             res = res ^ (idx ^ n)
         
         return res
+
+        # SUM solution
+        desired = [i for i in range(len(nums)+1)]
+        return sum(desired) - sum(nums)
+        
         
 # @lc code=end
 

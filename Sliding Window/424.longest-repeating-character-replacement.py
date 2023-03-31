@@ -64,7 +64,7 @@ class Solution:
             # replacement needed = windowSize - majority elements 
             # condition must hold: replacement_needed must <= k 
             
-            # shift the window
+            # shift the window when replacement_needed > k
             while (r - l + 1) - majority > k:
                 hashmap[s[l]] -= 1
                 l +=  1

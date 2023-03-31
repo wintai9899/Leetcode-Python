@@ -60,6 +60,44 @@
 #         self.next = next
 class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        dummyNode = ListNode(0,head)
+        prevGroup = dummyNode
+
+        while True:
+            # kth = last element in the group to be reversed
+            kthNode = self.getKthNode(prevGroup, k)
+
+            # out of nodes
+            if not kthNode:
+                break
+            
+            nextGroup = kthNode.next 
+
+            # reverse group 
+            # prev cannot be set to None
+            prev = kthNode.next
+            cur = prevGroup.next 
+
+            # reverse
+            while cur != nextGroup:
+                nextNode = cur.next
+                cur.next = prev
+                prev = cur
+                cur = nextNode
+
+            # make the links
+            temp = prevGroup.next
+            prevGroup.next = kthNode
+            prevGroup = temp
+
+        return dummyNode.next
+    
+    def getKthNode(self,cur,k):
+        while cur and k > 0:
+            cur = cur.next
+            k -= 1
+        
+        return cur
         
 # @lc code=end
 

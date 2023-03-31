@@ -59,19 +59,42 @@
 # @lc code=start
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        res = 0
-        l,r = 0,0
+        # nums = [2,  3,  1,  1,   4]
+        # think what is the furthest current nums[i] can jump
+        # [2,  3,  1,  1,   4]
+        #  A   <-B->   <- C->
+        #  0     1        2
+        # the furthest jump for A will land in Subarray b
+        # the furthest jump from subarray b is to c 
+        # think of it like a bfs: 2 -> [3,1] region -> [1,4] region  : 2 jumps
+
+        # [2,  3,  1,  1,   4]
+        #  A   <-B->   <- C->
+        #      L    R        
         
-        while r < len(nums) -1 :
+        # [2,  3,  1,  1,   4]
+        #  A   <-B->   <- C->
+        #              L     R
+
+
+        res = 0
+        # window of current subarray
+        l,r = 0,0
+        # BFS
+        while r < len(nums)-1:
             furthestJump = 0
+            # find furthest jump in current subarray
             for i in range(l,r+1):
                 furthestJump = max(furthestJump, nums[i] + i)
-            
-            l = r
-            r = furthestJump
+
+            # shift pointers 
+            l = r 
+            r = furthestJump 
+
             res += 1
         
         return res
+
         
 # @lc code=end
 

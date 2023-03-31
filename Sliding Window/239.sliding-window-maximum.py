@@ -58,6 +58,33 @@
 # @lc code=start
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        output = [] 
+        # Monotonic Q : -> decreasing order
+        # first element on the left is always the largest 
+        q = collections.deque() # indices not values
+        l,r = 0,0 
+
+        while r < len(nums):
+            # keep removing elements if nums[r] is large
+            while q and nums[q[-1]] < nums[r]:
+                q.pop()
+            q.append(r)
+
+            # q[0] will always be the largest in the q
+            # maintain window
+            # prev window max is still the largest in the current window 
+            if l > q[0]:
+                q.popleft()
+            
+            if (r - l + 1) >= k:
+                output.append(nums[q[0]])
+                l += 1
+            
+            r += 1
+    
+        return output
+
+
         
 # @lc code=end
 
